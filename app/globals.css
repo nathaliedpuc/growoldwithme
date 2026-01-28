@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme {
+    --color-secondary-pink: #fdf2f8;
+    /* Soft romantic pink */
+}
