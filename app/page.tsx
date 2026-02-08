@@ -58,7 +58,7 @@ export default function Home() {
           }}
         />
         <button
-          className='yes-button absolute bottom-30 left-43 z-50'
+          className='yes-button absolute bottom-30 left-45 z-50'
           onClick={handleSnowConfetti}
         >
           Yes!

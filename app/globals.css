@@ -130,12 +130,11 @@ canvas {
 .yes-button {
     background: linear-gradient(180deg, #ff4d6d 0%, #ff758c 100%);
     color: white;
-    padding: 12px 40px;
+    padding: 0.5rem 2rem;
     border-radius: 50px;
     font-weight: 600;
     font-size: 1.25rem;
     border: none;
-    cursor: pointer;
     box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
     display: flex;
     align-items: center;
@@ -150,7 +149,7 @@ canvas {
     }
 
     50% {
-        box-shadow: 0 4px 20px rgba(255, 77, 109, 0.8);
+        box-shadow: 0 4px 18px rgba(255, 77, 109, 0.6);
     }
 
     100% {
