@@ -4,3 +4,161 @@
     --color-secondary-pink: #fdf2f8;
     /* Soft romantic pink */
 }
+
+/* Base resets to ensure full height works cleanly */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, #fdf5f9 0%, #f9c8e3 100%);
+}
+
+/* Ensure the Spline component wrapper centers its canvas without forcing its size */
+.center-container>div {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+canvas {
+    display: block;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #fdf5f9 0%, #f9c8e3 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.heart-loader {
+    width: 100px;
+    height: 90px;
+    position: relative;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.heart-loader:before,
+.heart-loader:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: #ff4d6d;
+    border-radius: 50px 50px 0 0;
+}
+
+.heart-loader:before {
+    left: 50px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart-loader:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.1);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.15);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+}
+
+.loading-text {
+    margin-top: 2rem;
+    color: #ff4d6d;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.yes-button {
+    background: linear-gradient(180deg, #ff4d6d 0%, #ff758c 100%);
+    color: white;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.25rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    animation: buttonPulse 2s infinite;
+}
+
+@keyframes buttonPulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 4px 20px rgba(255, 77, 109, 0.8);
+    }
+
+    100% {
+        box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    }
+}
+
+
+.yes-button:active {
+    transform: scale(0.95);
+}

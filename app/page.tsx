@@ -1,13 +1,69 @@
-import Spline from '@splinetool/react-spline/next';
+'use client';
+
+import { useState } from 'react';
+import Spline from '@splinetool/react-spline';
+import confetti from 'canvas-confetti';
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleSnowConfetti = () => {
+    const duration = 15 * 100;
+    const animationEnd = Date.now() + duration;
+    let skew = 1;
+
+    function randomInRange(min: number, max: number) {
+      return Math.random() * (max - min) + min;
+    }
+
+    (function frame() {
+      const timeLeft = animationEnd - Date.now();
+      const ticks = Math.max(200, 500 * (timeLeft / duration));
+      skew = Math.max(0.8, skew - 0.001);
+
+      confetti({
+        particleCount: 1,
+        startVelocity: 0,
+        ticks: ticks,
+        origin: {
+          x: Math.random(),
+          // since particles fall down, skew start toward the top
+          y: (Math.random() * skew) - 0.2
+        },
+        colors: ['#ff4d6d', '#ff758c', '#ffb3c1', '#fdf2f8'], // Pink snow
+        shapes: ['circle'],
+        gravity: randomInRange(0.4, 0.6),
+        scalar: randomInRange(0.4, 1),
+        drift: randomInRange(-0.4, 0.4)
+      });
+
+      if (timeLeft > 0) {
+        requestAnimationFrame(frame);
+      }
+    }());
+  };
+
   return (
-    <main className="min-h-screen w-full bg-secondary-pink">
-      <Spline
-        scene="scene.splinecode"
-        wasmPath="/"
-      />
+    <main className="center-container">
+      <div className={`loading-overlay ${!isLoading ? 'hidden' : ''}`}>
+        <p className="loading-text">The journey is always more beautiful than the destination..</p>
+      </div>
+
+      <div className='relative'>
+        <Spline
+          scene="scene.splinecode"
+          onLoad={() => {
+            console.log('Spline loaded');
+            setIsLoading(false);
+          }}
+        />
+        <button
+          className='yes-button absolute bottom-30 left-43 z-50'
+          onClick={handleSnowConfetti}
+        >
+          Yes!
+        </button>
+      </div>
     </main>
   );
 }
-
