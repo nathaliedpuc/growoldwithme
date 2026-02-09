@@ -128,10 +128,9 @@ canvas {
 }
 
 .yes-button {
-    background: radial-gradient(circle at center, #f78096 100%, transparent 30%);
+    background: radial-gradient(circle at center, #f78096 0%, transparent 55%);
     color: white;
     padding: 0.5rem 2rem;
-    border-radius: 50px;
     font-weight: 600;
     font-size: 1.25rem;
     border: none;
@@ -139,22 +138,11 @@ canvas {
     align-items: center;
     gap: 8px;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    box-shadow: none;
     animation: buttonPulse 3s infinite ease-in-out;
 }
 
-@keyframes buttonPulse {
-    0% {
-        box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
-    }
-
-    50% {
-        box-shadow: 0 4px 18px rgba(255, 77, 109, 0.6);
-    }
-
-    100% {
-        box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
-    }
-}
 
 
 .yes-button:active {
