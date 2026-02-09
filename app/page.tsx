@@ -58,7 +58,7 @@ export default function Home() {
           }}
         />
         <button
-          className='yes-button absolute bottom-30 left-45 z-50'
+          className='yes-button fixed bottom-0 left-0 w-full z-50 !rounded-none !py-3 flex justify-center items-center text-3xl tracking-[0.3em] font-light uppercase transition-all duration-500 hover:tracking-[0.5em] active:scale-95 '
           onClick={handleSnowConfetti}
         >
           Yes!
